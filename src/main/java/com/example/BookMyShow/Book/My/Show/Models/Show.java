@@ -1,0 +1,47 @@
+package com.example.BookMyShow.Book.My.Show.Models;
+
+import jakarta.persistence.*;
+import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import java.sql.Date;
+import java.time.LocalDate;
+import java.util.List;
+
+@Entity
+@Table
+@Getter
+@Setter
+@RequiredArgsConstructor
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+public class Show {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    private LocalDate showDate;
+
+    private LocalDate showTime;
+
+    @CreationTimestamp
+    private Date createdAt;
+
+    @UpdateTimestamp
+    private Date updatedAt;
+
+    @OneToMany(mappedBy = "show", cascade = CascadeType.ALL)
+    private List<Ticket> ticketList;
+
+    @ManyToOne
+    @JoinColumn
+    private Movie movie;
+
+    @ManyToOne
+    @JoinColumn
+    private Theater theater;
+
+}
