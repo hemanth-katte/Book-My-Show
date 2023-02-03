@@ -13,7 +13,7 @@ import java.sql.Date;
 @RequiredArgsConstructor
 @Builder
 @AllArgsConstructor
-@NoArgsConstructor
+//@NoArgsConstructor
 public class ShowSeat {
 
     @Id
@@ -35,5 +35,11 @@ public class ShowSeat {
     @JoinColumn
     private Ticket ticket;
 
+    @ManyToOne
+    @JoinColumn
+    private Show show;
 
+
+    public void setBookedAt(java.util.Date date) {
+    }
 }

@@ -12,9 +12,9 @@ import java.util.List;
 @Getter
 @Setter
 @RequiredArgsConstructor
-//@Builder
+@Builder
 @AllArgsConstructor
-@NoArgsConstructor
+//@NoArgsConstructor
 public class Ticket {
 
     @Id
@@ -23,7 +23,7 @@ public class Ticket {
 
     private String allotedSeats;
 
-    private int amount;
+    private double amount;
 
     @CreationTimestamp
     private Date booked_at;
@@ -39,4 +39,6 @@ public class Ticket {
     @OneToMany(mappedBy = "ticket", cascade = CascadeType.ALL)
     private List<ShowSeat> bookedSeats;
 
+    public void setBooked_at(java.util.Date date) {
+    }
 }

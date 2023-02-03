@@ -9,7 +9,6 @@ import java.util.List;
 @Table
 @Getter
 @Setter
-@RequiredArgsConstructor
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor

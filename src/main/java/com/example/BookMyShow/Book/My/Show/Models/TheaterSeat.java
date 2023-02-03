@@ -5,20 +5,19 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table
+@Table(name = "seats_of_theater")
 @Getter
 @Setter
 @RequiredArgsConstructor
 @Builder
 @AllArgsConstructor
-@NoArgsConstructor
+//@NoArgsConstructor
 public class TheaterSeat {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(unique = true)
     private String seatNo;
 
     @Enumerated(value = EnumType.STRING)
@@ -30,4 +29,9 @@ public class TheaterSeat {
     @JoinColumn
     private Theater theater;
 
+    public TheaterSeat(String seatNo, SeatType seatType, int price) {
+        this.seatNo =seatNo;
+        this.seatType = seatType;
+        this.price = price;
+    }
 }

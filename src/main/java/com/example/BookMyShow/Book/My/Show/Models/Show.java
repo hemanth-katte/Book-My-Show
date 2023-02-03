@@ -7,13 +7,14 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 @Entity
-@Table
+@Table(name = "shows_available")
 @Getter
 @Setter
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -25,7 +26,9 @@ public class Show {
 
     private LocalDate showDate;
 
-    private LocalDate showTime;
+    private LocalTime showTime;
+
+    private double multiplier;
 
     @CreationTimestamp
     private Date createdAt;
@@ -35,6 +38,9 @@ public class Show {
 
     @OneToMany(mappedBy = "show", cascade = CascadeType.ALL)
     private List<Ticket> ticketList;
+
+    @OneToMany(mappedBy = "show", cascade = CascadeType.ALL)
+    private List<ShowSeat> showSeatList;
 
     @ManyToOne
     @JoinColumn
